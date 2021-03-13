@@ -15,7 +15,7 @@
     <form method="post">
         Name:<input type="text" name="name"><br/>
         ID:<input type="text" name="id"><br/>
-        <input type="submit" value="Send data to server">
+        <input type="submit" value="Send data to server--ZouRongsheng">
     </form>
 
 </body>
