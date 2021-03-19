@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: lenovo
   Date: 2021/3/13
@@ -11,12 +11,13 @@
     <title>Title</title>
 </head>
 <body>
-    <a href="http://www.ecjtu.jx.cn/">go to ecjtu</a>
-    <form method="post">
-        Name:<input type="text" name="name"><br/>
-        ID:<input type="text" name="id"><br/>
-        <input type="submit" value="Send data to server">
-    </form>
+<a href="http://www.ecjtu.jx.cn/">go to ecjtu</a>
+<form method="post" action="hello">
+    Name:<input type="text" name="name"><br/>
+    ID:<input type="text" name="id"><br/>
+    Date and Time:<%=new Date()%><br/>
+    <input type="submit" value="Send data to server--ZouRongsheng">
+</form>
 
 </body>
 </html>
