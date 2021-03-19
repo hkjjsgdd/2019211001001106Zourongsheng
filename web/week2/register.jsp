@@ -41,12 +41,12 @@
             return true;
         }
 
-   
+
     </script>
 </head>
 <body>
 <form method="post">
-    Name:<input type="text" name="name" placeholder="username"><br/>
+    Name:<input type="text" name="username" placeholder="username"><br/>
     Password:<input type="text" name="password" placeholder="password" οnblur="checkPwd()"><br/>
     Email:<input type="text" name="email" placeholder="email" οnblur="checkEmail()"><br/>
     Birthdate:<input type="date" placeholder="Date of Birth(yyyy-dd-mm format)"><br/>
