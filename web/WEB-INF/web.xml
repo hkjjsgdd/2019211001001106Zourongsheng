@@ -19,6 +19,7 @@
     <servlet-mapping>
         <servlet-name>Zourongsheng</servlet-name>
         <url-pattern>/hello</url-pattern>
+        
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LifeCycleServlet</servlet-name>
