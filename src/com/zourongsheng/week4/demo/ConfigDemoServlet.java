@@ -19,6 +19,6 @@ public class ConfigDemoServlet extends HttpServlet {
         String name = config.getInitParameter("name");
         String studentId = config.getInitParameter("studentId");
         writer.println("name :" +name);
-        writer.println("studentId :" +studentId);     
+        writer.println("studentId :" +studentId);
     }
 }

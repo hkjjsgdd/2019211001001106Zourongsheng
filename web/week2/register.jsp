@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<form method="post">
+<form method="post" action="/jdbc">
     Name:<input type="text" name="name" placeholder="username"><br/>
     Password:<input type="text" name="password" placeholder="password"><br/>
     Email:<input type="text" name="email" placeholder="email"><br/>
