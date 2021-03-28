@@ -41,14 +41,14 @@ public class RegisterServlet04 extends HttpServlet {
         PreparedStatement ps=null;
         Integer id = Integer.valueOf(request.getParameter("id"));
         String username = request.getParameter("username");
-        String password = request.getParameter("password");    
+        String password = request.getParameter("password");
         String email = request.getParameter("email");
         String gender = request.getParameter("gender");
         String birthdate = request.getParameter("birthDate");
         User user =new User(id,username,password,email,gender,DateUitil.StrToUtil(birthdate));
 
         String sql = "insert into usertable(id,username,password,email,gender,birthdate) values(?,?,?,?,?,?)";
-        String search = "select * from usertable";
+        String search = "select * from usertable";  
 
         try {
             ps=con.prepareStatement(sql);
