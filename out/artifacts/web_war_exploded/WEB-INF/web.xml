@@ -8,6 +8,7 @@
 <!--        package +name of servlet-->
         <servlet-class>com.zourongsheng.week2.demo.HelloWorldServlet</servlet-class>
     </servlet>
+
     <servlet>
         <servlet-name>LifeCycleServlet</servlet-name>
         <servlet-class>com.zourongsheng.week3.demo.LifeCycleServlet</servlet-class>
@@ -16,16 +17,37 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.zourongsheng.week3.demo.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <servlet-class>com.zourongsheng.week4.demo.ConfigDemoServlet</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>Zourongsheng</param-value>
+        </init-param>
+        <init-param>
+            <param-name>studentId</param-name>
+            <param-value>2019211001001106</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <url-pattern>/config</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>Zourongsheng</servlet-name>
         <url-pattern>/hello</url-pattern>
+
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LifeCycleServlet</servlet-name>
         <url-pattern>/life</url-pattern>
     </servlet-mapping>
+
+
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/week3/register</url-pattern>
     </servlet-mapping>
+
 </web-app>
