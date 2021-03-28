@@ -12,10 +12,12 @@
 
 </head>
 <body>
-<form method="post">
-    Name:<input type="text" name="name" placeholder="username"><br/>
+<form method="post" action="/jdbc">
+    id:<input type="text" name="id" placeholder="id"><br/>
+    Name:<input type="text" name="username" placeholder="username"><br/>
     Password:<input type="text" name="password" placeholder="password"><br/>
     Email:<input type="text" name="email" placeholder="email"><br/>
+    gender:<input type="text" name="gender" placeholder="gender"><br/>
     Birthdate:<input type="date" placeholder="Date of Birth(yyyy-dd-mm format)"><br/>
     <input type="submit" class="button" value="register">
 </form>
