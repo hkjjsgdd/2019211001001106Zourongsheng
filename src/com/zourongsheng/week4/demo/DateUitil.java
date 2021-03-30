@@ -16,6 +16,11 @@ public class DateUitil {
         return null;
     }
     public static java.sql.Date UtilToSql(java.util.Date date){
+
         return new java.sql.Date(date.getTime());
+    }
+    public static String utilToStr(java.util.Date date){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(date);
     }
 }
