@@ -41,7 +41,7 @@ public class RegisterServlet04 extends HttpServlet {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }   
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PreparedStatement ps=null;
