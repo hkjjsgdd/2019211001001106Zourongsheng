@@ -28,20 +28,21 @@ public class RegisterServlet04 extends HttpServlet {
     Connection con = null;
     @Override
     public void init() throws ServletException{
-        ServletConfig config = getServletConfig();
-        String driver = config.getInitParameter("driver");
-        String url = config.getInitParameter("url");
-        String username = config.getInitParameter("username");
-        String password = config.getInitParameter("password");
-        try {
-            Class.forName(driver);
-            con= DriverManager.getConnection(url,username,password);
-            System.out.println(con);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }   
+//        ServletConfig config = getServletConfig();
+//        String driver = config.getInitParameter("driver");
+//        String url = config.getInitParameter("url");
+//        String username = config.getInitParameter("username");
+//        String password = config.getInitParameter("password");
+//        try {
+//            Class.forName(driver);
+//            con= DriverManager.getConnection(url,username,password);
+//            System.out.println(con);
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+         con = (Connection) getServletContext().getAttribute("con");
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PreparedStatement ps=null;
@@ -67,36 +68,41 @@ public class RegisterServlet04 extends HttpServlet {
             ps.executeUpdate();
             System.out.println("插入成功");
             ResultSet rs = con.createStatement().executeQuery(search);
+//            System.out.println(rs);
+//            System.out.println(rs.next());
+//            ArrayList<User> list = new ArrayList<User>();
+//            while (rs.next()){
+//                User user1 =new User();
+//                user1.setId(rs.getInt("id"));
+//                user1.setUsername(rs.getString("username"));
+//                user1.setPassword(rs.getString("password"));
+//                user1.setEmail(rs.getString("email"));
+//                user1.setGender(rs.getString("gender"));
+//                user1.setBirthdate(DateUitil.StrToUtil(rs.getString("birthdate")));
+//                list.add(user1);
+//            }
+//
+//            System.out.println("查询成功");
+//            response.setContentType("text/html");
+//            PrintWriter out = response.getWriter();
 
-            ArrayList<User> list = new ArrayList<User>();
-            while (rs.next()){
-                User user1 =new User();
-                user1.setId(rs.getInt("id"));
-                user1.setUsername(rs.getString("username"));
-                user1.setPassword(rs.getString("password"));
-                user1.setEmail(rs.getString("email"));
-                user1.setGender(rs.getString("gender"));
-                user1.setBirthdate(DateUitil.StrToUtil(rs.getString("birthdate")));
-                list.add(user1);
-            }
-
-            System.out.println("查询成功");
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
 
 
-
-            out.println("<HTML>");
-            out.println("<head><meta charset=utf-8></head>");
-            out.println("<Body>");
-            out.println("<table width='500' border='1' cellspacing='1' cellpadding='52' align='center'>");
-            out.println("<thead><tr><th>id</th><th>username</th><th>password</th><th>email</th><th>gender</th><th>birthdate</th></tr>");
-            for (User users : list) {
-                out.println("<tbody><tr><th>"+users.getId()+"</th><th>"+users.getUsername()+"</th><th>"+users.getPassword()+"</th><th>"+users.getEmail()+"</th><th>"+users.getGender()+"</th><th>"+DateUitil.utilToStr(user.getBirthdate())+"</th></tr></tbody>");
-            }
-            out.println("</table>");
-            out.println("</Body>");
-            out.println("</HTML>");
+//            out.println("<HTML>");
+//            out.println("<head><meta charset=utf-8></head>");
+//            out.println("<Body>");
+//            out.println("<table width='500' border='1' cellspacing='1' cellpadding='52' align='center'>");
+//            out.println("<thead><tr><th>id</th><th>username</th><th>password</th><th>email</th><th>gender</th><th>birthdate</th></tr>");
+//            for (User users : list) {
+//                out.println("<tbody><tr><th>"+users.getId()+"</th><th>"+users.getUsername()+"</th><th>"+users.getPassword()+"</th><th>"+users.getEmail()+"</th><th>"+users.getGender()+"</th><th>"+DateUitil.utilToStr(user.getBirthdate())+"</th></tr></tbody>");
+//            }
+//            out.println("</table>");
+//            out.println("</Body>");
+//            out.println("</HTML>");
+//            System.out.println(rs);
+            request.setAttribute("rname",rs);
+            request.getRequestDispatcher("userList.jsp").forward(request,response);
+            System.out.println("I am in Registerjsp");
         } catch (SQLException e) {
             e.printStackTrace();
         }

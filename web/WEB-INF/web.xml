@@ -86,7 +86,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterServlet04</servlet-name>
-        <url-pattern>/week4/register</url-pattern>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     
 
