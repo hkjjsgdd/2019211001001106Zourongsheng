@@ -67,7 +67,7 @@ public class RegisterServlet04 extends HttpServlet {
             ps.setDate(5,DateUitil.UtilToSql(user.getBirthdate()));
             ps.executeUpdate();
             System.out.println("插入成功");
-            ResultSet rs = con.createStatement().executeQuery(search);
+//            ResultSet rs = con.createStatement().executeQuery(search);
 //            System.out.println(rs);
 //            System.out.println(rs.next());
 //            ArrayList<User> list = new ArrayList<User>();
@@ -100,9 +100,11 @@ public class RegisterServlet04 extends HttpServlet {
 //            out.println("</Body>");
 //            out.println("</HTML>");
 //            System.out.println(rs);
-            request.setAttribute("rname",rs);
-            request.getRequestDispatcher("userList.jsp").forward(request,response);
-            System.out.println("I am in Registerjsp");
+//            request.setAttribute("rname",rs);
+//            request.getRequestDispatcher("userList.jsp").forward(request,response);
+//            System.out.println("I am in Registerjsp");
+            System.out.println("================");
+            response.sendRedirect("login.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
         }

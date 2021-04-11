@@ -18,19 +18,20 @@ import java.util.ArrayList;
 public class LoginServlet extends HttpServlet {
     Connection con=null;
     public void init() {
-        String driver = getServletConfig().getServletContext().getInitParameter("driver");
-        String url = getServletConfig().getServletContext().getInitParameter("url");
-        String username = getServletConfig().getServletContext().getInitParameter("username");
-        String password = getServletConfig().getServletContext().getInitParameter("password");
-        try {
-            Class.forName(driver);
-            con= DriverManager.getConnection(url,username,password);
-            System.out.println(con);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        String driver = getServletConfig().getServletContext().getInitParameter("driver");
+//        String url = getServletConfig().getServletContext().getInitParameter("url");
+//        String username = getServletConfig().getServletContext().getInitParameter("username");
+//        String password = getServletConfig().getServletContext().getInitParameter("password");
+//        try {
+//            Class.forName(driver);
+//            con= DriverManager.getConnection(url,username,password);
+//            System.out.println(con);
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+        con = (Connection) getServletContext().getAttribute("con");
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PreparedStatement ps=null;
@@ -57,11 +58,20 @@ public class LoginServlet extends HttpServlet {
             }
 //
             if (user.getUsername()!= null && user.getPassword().equals(password)){
-                    out.println("Login Success!!!");
-                    out.println("Welcome," +username);
+//                    out.println("Login Success!!!");
+//                    out.println("Welcome," +username);
+                request.setAttribute("id",rs.getInt("id"));
+                request.setAttribute("username",rs.getString("username"));
+                request.setAttribute("password",rs.getString("password"));
+                request.setAttribute("email",rs.getString("email"));
+                request.setAttribute("gender",rs.getString("gender"));
+                request.setAttribute("birthDate",rs.getString("birthDate"));
+                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
 
                 }else {
-                    out.println("Username or Password Error!!!");
+//                    out.println("Username or Password Error!!!");
+                request.setAttribute("message","Username or Password Error");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
                 }
 
 
