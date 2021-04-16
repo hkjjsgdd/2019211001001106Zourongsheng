@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 ////                    out.println("Username or Password Error!!!");
 //                request.setAttribute("message","Username or Password Error");
 //                request.getRequestDispatcher("login.jsp").forward(request,response);
-//                }
+//                } 
 
 //
 //        } catch (SQLException e) {
