@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,19 +30,39 @@ public class UserDao implements IUserDao {
 
     @Override
     public int deleteUser(Connection con, User user) throws SQLException {
+        PreparedStatement ps=null;
         String sql = "delete from usertable where id=?";
-
+        ps=con.prepareStatement(sql);
+        ps.setInt(1,user.getId());
+        ps.executeUpdate();
         return 0;
     }
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
+        PreparedStatement ps=null;
+        String sql = "update usertable set gender='female' where id=?";
+        ps=con.prepareStatement(sql);
+        ps.setInt(1,user.getId());
+        ps.executeUpdate();
         return 0;
     }
 
     @Override
     public User findById(Connection con, Integer id) throws SQLException {
-        return null;
+        String search = "select * from usertable where id=?";
+        PreparedStatement ps=null;
+        ps=con.prepareStatement(search);
+        ps.setInt(1,id);
+        ResultSet rs = ps.executeQuery();
+        User user1 =new User();
+        user1.setId(rs.getInt("id"));
+        user1.setUsername(rs.getString("username"));
+        user1.setPassword(rs.getString("password"));
+        user1.setEmail(rs.getString("email"));
+        user1.setGender(rs.getString("gender"));
+        user1.setBirthdate(rs.getDate("birthdate"));
+        return user1;
     }
 
     @Override
@@ -66,31 +87,138 @@ public class UserDao implements IUserDao {
 
     @Override
     public List<User> findByUsername(Connection con, String username) throws SQLException {
-        return null;
+        String sql = "select id,username,password,email,gender,birthdate from usertable where username=?";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1,username);//为上面的sql语句的username 和password 赋值
+        ArrayList<User> list = new ArrayList<User>();
+        ResultSet rs = st.executeQuery();
+        User user =null;
+        if (rs.next()){
+            user=new User();
+            user.setId(rs.getInt("id"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            user.setEmail(rs.getString("email"));
+            user.setGender(rs.getString("gender"));
+            user.setBirthdate(rs.getDate("birthdate"));
+            list.add(user);
+        }
+
+        return list;
     }
 
     @Override
     public List<User> findByPassword(Connection con, String password) throws SQLException {
-        return null;
+        String sql = "select id,username,password,email,gender,birthdate from usertable where password=?";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1,password);//为上面的sql语句的username 和password 赋值
+        ArrayList<User> list = new ArrayList<User>();
+        ResultSet rs = st.executeQuery();
+        User user =null;
+        if (rs.next()){
+            user=new User();
+            user.setId(rs.getInt("id"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            user.setEmail(rs.getString("email"));
+            user.setGender(rs.getString("gender"));
+            user.setBirthdate(rs.getDate("birthdate"));
+            list.add(user);
+        }
+
+        return list;
+
+
     }
 
     @Override
     public List<User> findByEmail(Connection con, String email) throws SQLException {
-        return null;
+
+        String sql = "select id,username,password,email,gender,birthdate from usertable where email=?";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1,email);//为上面的sql语句的username 和password 赋值
+        ArrayList<User> list = new ArrayList<User>();
+        ResultSet rs = st.executeQuery();
+        User user =null;
+        if (rs.next()){
+            user=new User();
+            user.setId(rs.getInt("id"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            user.setEmail(rs.getString("email"));
+            user.setGender(rs.getString("gender"));
+            user.setBirthdate(rs.getDate("birthdate"));
+            list.add(user);
+        }
+
+        return list;
     }
 
     @Override
     public List<User> findByGender(Connection con, String gender) throws SQLException {
-        return null;
+        String sql = "select id,username,password,email,gender,birthdate from usertable where gender=?";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setString(1,gender);//为上面的sql语句的username 和password 赋值
+        ArrayList<User> list = new ArrayList<User>();
+        ResultSet rs = st.executeQuery();
+        User user =null;
+        if (rs.next()){
+            user=new User();
+            user.setId(rs.getInt("id"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            user.setEmail(rs.getString("email"));
+            user.setGender(rs.getString("gender"));
+            user.setBirthdate(rs.getDate("birthdate"));
+            list.add(user);
+        }
+
+        return list;
     }
 
     @Override
     public List<User> findByBirthdate(Connection con, Date birthDate) throws SQLException {
-        return null;
+        String sql = "select id,username,password,email,gender,birthdate from usertable where birthDate=?";
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setDate(1, (java.sql.Date) birthDate);//为上面的sql语句的username 和password 赋值
+        ArrayList<User> list = new ArrayList<User>();
+        ResultSet rs = st.executeQuery();
+        User user =null;
+        if (rs.next()){
+            user=new User();
+            user.setId(rs.getInt("id"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            user.setEmail(rs.getString("email"));
+            user.setGender(rs.getString("gender"));
+            user.setBirthdate(rs.getDate("birthdate"));
+            list.add(user);
+        }
+
+        return list;
     }
 
     @Override
     public List<User> findAllUser(Connection con) throws SQLException {
-        return null;
+        String sql = "select * from usertable";
+
+
+        ArrayList<User> list = new ArrayList<User>();
+        ResultSet rs = con.createStatement().executeQuery(sql);
+        User user =null;
+        if (rs.next()){
+            user=new User();
+            user.setId(rs.getInt("id"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            user.setEmail(rs.getString("email"));
+            user.setGender(rs.getString("gender"));
+            user.setBirthdate(rs.getDate("birthdate"));
+            list.add(user);
+        }
+
+        return list;
+
+
     }
 }
