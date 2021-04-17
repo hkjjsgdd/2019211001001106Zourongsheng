@@ -15,7 +15,7 @@ public class UserDao implements IUserDao {
     @Override
     public boolean saveUser(Connection con, User user) throws SQLException {
         user = null;
-        String sql = "insert into usertable(username,password,email,gender,birthdate) values(?,?,?,?,?)";
+        String sql = "insert into usertable(username,password,email,gender,birthdate) values(?,?,?,?,?)";//插入语句
         PreparedStatement ps=null;
         ps=con.prepareStatement(sql);
         ps.setString(1,user.getUsername());
@@ -31,7 +31,7 @@ public class UserDao implements IUserDao {
     @Override
     public int deleteUser(Connection con, User user) throws SQLException {
         PreparedStatement ps=null;
-        String sql = "delete from usertable where id=?";
+        String sql = "delete from usertable where id=?";//根据ID删除数据
         ps=con.prepareStatement(sql);
         ps.setInt(1,user.getId());
         ps.executeUpdate();
@@ -41,7 +41,7 @@ public class UserDao implements IUserDao {
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
         PreparedStatement ps=null;
-        String sql = "update usertable set gender='female' where id=?";
+        String sql = "update usertable set gender='female' where id=?";//更新操作
         ps=con.prepareStatement(sql);
         ps.setInt(1,user.getId());
         ps.executeUpdate();
@@ -50,7 +50,7 @@ public class UserDao implements IUserDao {
 
     @Override
     public User findById(Connection con, Integer id) throws SQLException {
-        String search = "select * from usertable where id=?";
+        String search = "select * from usertable where id=?";//根据id查找
         PreparedStatement ps=null;
         ps=con.prepareStatement(search);
         ps.setInt(1,id);
@@ -89,7 +89,7 @@ public class UserDao implements IUserDao {
     public List<User> findByUsername(Connection con, String username) throws SQLException {
         String sql = "select id,username,password,email,gender,birthdate from usertable where username=?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1,username);//为上面的sql语句的username 和password 赋值
+        st.setString(1,username);//根据username查找数据
         ArrayList<User> list = new ArrayList<User>();
         ResultSet rs = st.executeQuery();
         User user =null;
@@ -111,7 +111,7 @@ public class UserDao implements IUserDao {
     public List<User> findByPassword(Connection con, String password) throws SQLException {
         String sql = "select id,username,password,email,gender,birthdate from usertable where password=?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1,password);//为上面的sql语句的username 和password 赋值
+        st.setString(1,password);//根据password查找数据
         ArrayList<User> list = new ArrayList<User>();
         ResultSet rs = st.executeQuery();
         User user =null;
@@ -136,7 +136,7 @@ public class UserDao implements IUserDao {
 
         String sql = "select id,username,password,email,gender,birthdate from usertable where email=?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1,email);//为上面的sql语句的username 和password 赋值
+        st.setString(1,email);//根据email查找数据
         ArrayList<User> list = new ArrayList<User>();
         ResultSet rs = st.executeQuery();
         User user =null;
@@ -158,7 +158,7 @@ public class UserDao implements IUserDao {
     public List<User> findByGender(Connection con, String gender) throws SQLException {
         String sql = "select id,username,password,email,gender,birthdate from usertable where gender=?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1,gender);//为上面的sql语句的username 和password 赋值
+        st.setString(1,gender);//根据gender查找数据
         ArrayList<User> list = new ArrayList<User>();
         ResultSet rs = st.executeQuery();
         User user =null;
@@ -180,7 +180,7 @@ public class UserDao implements IUserDao {
     public List<User> findByBirthdate(Connection con, Date birthDate) throws SQLException {
         String sql = "select id,username,password,email,gender,birthdate from usertable where birthDate=?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setDate(1, (java.sql.Date) birthDate);//为上面的sql语句的username 和password 赋值
+        st.setDate(1, (java.sql.Date) birthDate);//根据出生日期查找
         ArrayList<User> list = new ArrayList<User>();
         ResultSet rs = st.executeQuery();
         User user =null;
@@ -202,7 +202,7 @@ public class UserDao implements IUserDao {
     public List<User> findAllUser(Connection con) throws SQLException {
         String sql = "select * from usertable";
 
-
+        //查找数据库usertable表里所有数据
         ArrayList<User> list = new ArrayList<User>();
         ResultSet rs = con.createStatement().executeQuery(sql);
         User user =null;

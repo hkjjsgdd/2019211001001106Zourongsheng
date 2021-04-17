@@ -18,7 +18,7 @@ public class SearchServlet extends HttpServlet {
         String search = request.getParameter("search");
         if(txt.isEmpty()){
             response.sendRedirect("index.jsp");
-        }else {  
+        }else {
             if (search.equals("baidu")){
                 response.sendRedirect("https://www.baidu.com/s?wd="+txt);
             }else if(search.equals("bing")){
