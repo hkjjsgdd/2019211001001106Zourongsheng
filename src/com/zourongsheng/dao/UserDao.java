@@ -23,9 +23,10 @@ public class UserDao implements IUserDao {
         ps.setString(3,user.getEmail());
         ps.setString(4,user.getGender());
         ps.setDate(5, (java.sql.Date) user.getBirthdate());
-        ps.executeUpdate();
+        int n= ps.executeUpdate();
         System.out.println("插入成功");
-        return false;
+        if (n>0) return true;
+        else return false;
     }
 
     @Override
@@ -41,11 +42,12 @@ public class UserDao implements IUserDao {
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
         PreparedStatement ps=null;
-        String sql = "update usertable set gender='female' where id=?";//更新操作
+        String sql = "update usertable set gender=? where id=?";//更新操作
         ps=con.prepareStatement(sql);
-        ps.setInt(1,user.getId());
-        ps.executeUpdate();
-        return 0;
+        ps.setString(1,user.getGender());
+        ps.setInt(2,user.getId());
+        int result=ps.executeUpdate();
+        return result;
     }
 
     @Override
@@ -56,12 +58,15 @@ public class UserDao implements IUserDao {
         ps.setInt(1,id);
         ResultSet rs = ps.executeQuery();
         User user1 =new User();
-        user1.setId(rs.getInt("id"));
-        user1.setUsername(rs.getString("username"));
-        user1.setPassword(rs.getString("password"));
-        user1.setEmail(rs.getString("email"));
-        user1.setGender(rs.getString("gender"));
-        user1.setBirthdate(rs.getDate("birthdate"));
+        if(rs.next()){
+            user1.setId(rs.getInt("id"));
+            user1.setUsername(rs.getString("username"));
+            user1.setPassword(rs.getString("password"));
+            user1.setEmail(rs.getString("email"));
+            user1.setGender(rs.getString("gender"));
+            user1.setBirthdate(rs.getDate("birthdate"));
+        }
+
         return user1;
     }
 
