@@ -7,9 +7,7 @@ import sun.java2d.pipe.ValidatePipe;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -84,7 +82,14 @@ public class LoginServlet extends HttpServlet {
         try {
             User user = userDao.findByUsernamePassword(con,username,password);
                 if (user!=null){
-                    request.setAttribute("user",user);
+                    //week8 code -demo #1 -user cookie for session
+//                    Cookie c = new Cookie("sessionid",""+user.getId());
+//                    c.setMaxAge(10*60);
+//                    response.addCookie(c);
+                    HttpSession session  =request.getSession();
+                    System.out.println("session id-->"+session.getId());
+                    session.setMaxInactiveInterval(10);
+                    session.setAttribute("user",user);
                     request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
                 }else {
                     request.setAttribute("message","Username or Password Error");
