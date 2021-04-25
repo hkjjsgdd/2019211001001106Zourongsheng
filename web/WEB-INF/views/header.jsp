@@ -46,7 +46,15 @@
         <%} //end of else%>
     </font></td> </tr>
     <tr height="20"><td align="right">
-        <br> <a href="#">Logout</a>
+            <%
+                if (session.getAttribute("user")!=null){
+                    %>
+        <br> <a href="logout">Logout</a>
+                <%}//end of if
+            %>
+
+
+
         <br><a href="#">My Cart</a><br/>
         <a href="register.jsp">Register Here</a>
     </td></tr>
