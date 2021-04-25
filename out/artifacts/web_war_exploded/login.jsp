@@ -13,7 +13,7 @@
         out.print("<h3>"+request.getAttribute("messge")+"</h3>");
     }
 %>
-<form method="post" action="login">
+<form method="post" action="login1">
     UserName:<input type="text" name="username"><br/>
     Password:<input type="password" name="password"><br/>
     <input type="submit" class="button" value="Login">
