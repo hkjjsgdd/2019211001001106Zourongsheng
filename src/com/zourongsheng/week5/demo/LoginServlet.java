@@ -82,6 +82,21 @@ public class LoginServlet extends HttpServlet {
         try {
             User user = userDao.findByUsernamePassword(con,username,password);
                 if (user!=null){
+                    String rememberMe =request.getParameter("rememberMe");
+                    if (rememberMe!=null && rememberMe.equals("1")){
+                        Cookie usernameCookie = new Cookie("cUsername",user.getUsername());
+                        Cookie passwordCookie = new Cookie("cPassword",user.getPassword());
+                        Cookie rememberMeCookie = new Cookie("cRememberMe",rememberMe);
+                        //set age of cookies
+                        usernameCookie.setMaxAge(5);
+                        passwordCookie.setMaxAge(5);
+                        rememberMeCookie.setMaxAge(5);
+                        //add 3 cookies into response
+                        response.addCookie(usernameCookie);
+                        response.addCookie(passwordCookie);
+                        response.addCookie(rememberMeCookie);
+
+                    }
                     //week8 code -demo #1 -user cookie for session
 //                    Cookie c = new Cookie("sessionid",""+user.getId());
 //                    c.setMaxAge(10*60);
