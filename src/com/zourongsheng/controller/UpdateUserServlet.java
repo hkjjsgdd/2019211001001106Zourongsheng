@@ -34,9 +34,9 @@ public class UpdateUserServlet extends HttpServlet {
         try {
             userDao.updateUser(con, user);
             User byId = userDao.findById(con, user.getId());
-            request.getSession().setAttribute("user",byId); 
+            request.getSession().setAttribute("user",byId);
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace();   
         }
         request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
     }
