@@ -14,14 +14,18 @@
 <%--        out.println("<br/>"+c.getName()+"==="+c.getValue());--%>
 <%--    }--%>
 <%--%>--%>
-<% User u =(User)session.getAttribute("user");
+<%
+    User u1 =(User)session.getAttribute("user");
+    System.out.println(u1);
 %>
 <table>
-    <tr><td>Username:</td><td><%=u.getUsername()%></td></tr>
-    <tr><td>Password:</td><td><%=u.getPassword()%></td></tr>
-    <tr><td>email:</td><td><%=u.getEmail()%></td></tr>
-    <tr><td>Gender:</td><td><%=u.getGender()%></td></tr>
-    <tr><td>Birth Date:</td><td><%=u.getBirthdate()%></td></tr>
+    <tr><td>ID:<%=u1.getId()%></td></tr>
+    <tr><td>Username:</td><td><%=u1.getUsername()%></td></tr>
+    <tr><td>Password:</td><td><%=u1.getPassword()%></td></tr>
+    <tr><td>email:</td><td><%=u1.getEmail()%></td></tr>
+    <tr><td>Gender:</td><td><%=u1.getGender()%></td></tr>
+    <tr><td>Birth Date:</td><td><%=u1.getBirthdate()%></td></tr>
 
 </table>
+<a href="updateUser">Update</a>
 <%@include file="footer.jsp"%>

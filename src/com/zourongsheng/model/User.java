@@ -59,8 +59,8 @@ public class User {
         this.birthdate = birthdate;
     }
 
-    public User(String username, String password, String email, String gender, Date birthdate) {
-
+    public User(Integer id,String username, String password, String email, String gender, Date birthdate) {
+        this.id=id;
         this.username = username;
         this.password = password;
         this.email = email;

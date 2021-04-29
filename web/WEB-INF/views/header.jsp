@@ -50,7 +50,7 @@
                 if (session.getAttribute("user")!=null){
                     %>
         <br> <a href="logout">Logout</a>
-                <%}//end of if  
+                <%}//end of if
             %>
 
 
