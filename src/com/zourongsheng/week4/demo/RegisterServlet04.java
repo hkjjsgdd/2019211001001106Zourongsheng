@@ -104,14 +104,14 @@ public class RegisterServlet04 extends HttpServlet {
 //            request.getRequestDispatcher("userList.jsp").forward(request,response);
 //            System.out.println("I am in Registerjsp");
             System.out.println("================");
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("login");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
     }
     @Override
     public void destroy(){
