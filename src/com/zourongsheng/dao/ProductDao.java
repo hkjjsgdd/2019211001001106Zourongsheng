@@ -1,10 +1,10 @@
 package com.zourongsheng.dao;
 
-    
+
 import com.zourongsheng.model.Product;
 
 import java.io.InputStream;
-import java.sql.Connection;
+import java.sql.Connection;    
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
