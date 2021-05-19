@@ -2,7 +2,9 @@ package com.zourongsheng.controller;
 
 
 
-import com.zourongsheng.week5.demo.entity.User;
+
+
+import com.zourongsheng.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
