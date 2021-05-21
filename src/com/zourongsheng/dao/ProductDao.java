@@ -4,10 +4,7 @@ package com.zourongsheng.dao;
 import com.zourongsheng.model.Product;
 
 import java.io.InputStream;
-import java.sql.Connection;    
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,16 +59,14 @@ public class ProductDao implements  IProductDao{
     @Override
     public Product findById(Integer productId, Connection con) throws SQLException {
         String search = "select * from Product where productId=?";
-        PreparedStatement ps = null;
+        PreparedStatement ps = con.prepareStatement(search);
         ps.setInt(1,productId);
-        ResultSet rs = ps.executeQuery(search);
+        ResultSet rs = ps.executeQuery();
         Product product = new Product();
         if (rs.next()){
             product.setProductId(rs.getInt("ProductId"));
-
             product.setProductName(rs.getString("ProductName"));
             product.setProductDescription(rs.getString("ProductDescription"));
-            product.setPicture(rs.getBinaryStream("picture"));
             product.setPrice(rs.getDouble("price"));
             product.setCategoryId(rs.getInt("CategoryId"));
         }
@@ -86,14 +81,12 @@ public class ProductDao implements  IProductDao{
         st.setInt(1,categoryId);
         ArrayList<Product> list= new ArrayList<Product>();
         ResultSet rs = st.executeQuery();
-        Product product = null;
-        if (rs.next()){
-            product=new Product();
-            product.setProductId(rs.getInt("ProductId"));
 
+        while (rs.next()){
+           Product product=new Product();
+            product.setProductId(rs.getInt("ProductId"));
             product.setProductName(rs.getString("ProductName"));
             product.setProductDescription(rs.getString("ProductDescription"));
-            product.setPicture(rs.getBinaryStream("picture"));
             product.setPrice(rs.getDouble("price"));
             product.setCategoryId(rs.getInt("CategoryId"));
             list.add(product);
@@ -127,20 +120,22 @@ public class ProductDao implements  IProductDao{
     @Override
     public List<Product> findAll(Connection con) throws SQLException {
         String sql = "select * from Product";
-        ArrayList<Product> list = new ArrayList<Product>();
-        ResultSet rs =con.createStatement().executeQuery(sql);
-        Product product = null;
-        if (rs.next()){
-            product=new Product();
+        List<Product> list = new ArrayList<Product>();
+        PreparedStatement pt = con.prepareStatement(sql);
+        ResultSet rs = pt.executeQuery();
+
+        while(rs.next()){
+           Product product=new Product();
             product.setProductId(rs.getInt("ProductId"));
 
             product.setProductName(rs.getString("ProductName"));
             product.setProductDescription(rs.getString("ProductDescription"));
-            product.setPicture(rs.getBinaryStream("picture"));
+
             product.setPrice(rs.getDouble("price"));
             product.setCategoryId(rs.getInt("CategoryId"));
             list.add(product);
         }
+        System.out.println("successful");
         return list;
     }
 
@@ -186,5 +181,18 @@ public class ProductDao implements  IProductDao{
             list.add(product);
         }
         return list;
+    }
+    public byte[] getPictureById(Integer productId,Connection con) throws SQLException {
+        byte[] imgBytes = null;
+        String sql = "select picture from product where productId=?";
+        PreparedStatement pt = con.prepareStatement(sql);
+        pt.setInt(1,productId);
+        ResultSet rs = pt.executeQuery();
+        while (rs.next()){
+            Blob blob = rs.getBlob("picture");
+            imgBytes=blob.getBytes(1,(int)blob.length());
+            System.out.println(imgBytes);
+        }
+        return imgBytes;
     }
 }
