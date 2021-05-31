@@ -39,45 +39,47 @@ public class LoginServlet extends HttpServlet {
 //        ArrayList<User> list = new ArrayList<User>();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-//        String search = "select * from usertable where username = ? and password=?";
-//        System.out.println(search);
-//        try {
-//            ps=con.prepareStatement(search);
-//            ps.setString(1,username);
-//            ps.setString(2,password);
-//            ResultSet rs = ps.executeQuery();
-//            System.out.println(rs);
+        String search = "select * from usertable where username = ? and password=?";
+        System.out.println(search);
+        try {
+            ps=con.prepareStatement(search);
+            ps.setString(1,username);
+            ps.setString(2,password);
+            ResultSet rs = ps.executeQuery();
+            System.out.println(rs);
 ////            while (rs.next()){
 ////                System.out.println(rs.getString("username"));
 ////                System.out.println(rs.getString("password"));
-////            }
-//            User user=new User();
-//            if (rs.next()){
-//                user.setUsername(rs.getString("username"));
-//                user.setPassword(rs.getString("password"));
-//            }
-////
-//            if (user.getUsername()!= null && user.getPassword().equals(password)){
-////                    out.println("Login Success!!!");
-////                    out.println("Welcome," +username);
-//                request.setAttribute("id",rs.getInt("id"));
-//                request.setAttribute("username",rs.getString("username"));
-//                request.setAttribute("password",rs.getString("password"));
-//                request.setAttribute("email",rs.getString("email"));
-//                request.setAttribute("gender",rs.getString("gender"));
-//                request.setAttribute("birthDate",rs.getString("birthDate"));
-//                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
-//
-//                }else {
-////                    out.println("Username or Password Error!!!");
-//                request.setAttribute("message","Username or Password Error");
-//                request.getRequestDispatcher("login.jsp").forward(request,response);
-//                }
+//           }
+            User user=new User();
+            if (rs.next()){
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+            }
+            System.out.println(user.getUsername());
+            System.out.println(user.getPassword());
 
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+            if (user.getUsername()!= null && user.getPassword().equals(password)){
+                    out.println("Login Success!!!");
+                   out.println("Welcome," +username);
+                request.setAttribute("id",rs.getInt("id"));
+                request.setAttribute("username",rs.getString("username"));
+                request.setAttribute("password",rs.getString("password"));
+                request.setAttribute("email",rs.getString("email"));
+                request.setAttribute("gender",rs.getString("gender"));
+                request.setAttribute("birthDate",rs.getString("birthDate"));
+                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
+
+                }else {
+                   out.println("Username or Password Error!!!");
+                request.setAttribute("message","Username or Password Error");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
+                }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         UserDao userDao = new UserDao();
         try {
             User user = userDao.findByUsernamePassword(con,username,password);
