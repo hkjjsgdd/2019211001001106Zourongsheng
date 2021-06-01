@@ -22,7 +22,7 @@
     <ul>
     <c:forEach var="i" begin="1" step="2" end="10">
         <li>${i}</li>
-    </c:forEach>
+    </c:forEach>    
     </ul>
    <%-- todo 3 : use c:forEach to print 2,4,6,8,10   --%>
     <ul>
