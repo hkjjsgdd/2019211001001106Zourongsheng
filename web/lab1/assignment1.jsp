@@ -16,15 +16,17 @@
         <c:forEach var="i" begin="1" end="10">
         <li>${i}</li>
         </c:forEach>
-    </ul>   
+    </ul>
     <%-- todo 1 : run assignement1.jsp  --%>
     <%-- todo 2 : use c:forEach to print list 1,3,5,7,9   --%>
     <ul>
+        <h1> use c:forEach to print list 1,3,5,7,9 </h1>
     <c:forEach var="i" begin="1" step="2" end="10">
         <li>${i}</li>
     </c:forEach>
     </ul>
    <%-- todo 3 : use c:forEach to print 2,4,6,8,10   --%>
+<h1> use c:forEach to print 2,4,6,8,10  </h1>
     <ul>
         <c:forEach var="i" begin="1" step="2" end="10">
             <li>${i+1}</li>
@@ -35,12 +37,14 @@
 <% String[] letters ={"one","two","three","four","five","six","seven","eight","nine","ten"};
    pageContext.setAttribute("letters", letters);
 %>
+<h1> use c:forEach to print all elements of array   </h1>
     <%-- todo 4 : use c:forEach to print all elements of array --%>
     <ul>
         <c:forEach var="L" items="${pageScope.letters}">
             <li>${L}</li>
         </c:forEach>
     </ul>
+
     <%-- todo 5 : use c:forEach to print "one","three","five","seven","nine"  of array --%>
     <ul>
         <c:forEach var="L" items="${pageScope.letters}" varStatus="s">
