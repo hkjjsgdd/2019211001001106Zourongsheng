@@ -68,8 +68,8 @@
 						<p> ${o.address1}</p>
 						<p>${o.address2}</p>
 						<p>${o.city},${o.state},${o.country}-${o.postalCode}</p>
-	    					<p>${o.phone}</p>
-						</td>    
+						<p>${o.phone}</p>
+						</td>
 						<td class="cart_total">
 						<%
 							com.zourongsheng.model.Order o=(com.zourongsheng.model.Order)pageContext.findAttribute("o");
