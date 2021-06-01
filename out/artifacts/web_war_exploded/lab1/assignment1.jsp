@@ -66,8 +66,8 @@ request.setAttribute("person",person);
     String str="one:two:three-four-five";
 %>
 <%--todo 8 : use c:forToken to print all words --%>
-<c:forTokens items="<%=str%>" delims=": -" var="num">
-    <c:out value="${num}"/><br>
+<c:forTokens items="<%=str%>" delims=": -" var="numbers">
+    <c:out value="${numbers}"/><br>
 </c:forTokens>
 </body>
 </html>

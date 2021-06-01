@@ -29,7 +29,7 @@ if(request.getParameter("username").equals("admin") && request.getParameter("pas
     <%-- todo 5. use c:otherwise --%>
 <c:otherwise>
     <%-- todo 6:use c:set to set a attribute name message="username password error" in request  --%>
-    <c:set var="message" value="username password error" scope="request"/>
+    <c:set var="message" value="Username Password Error" scope="request"/>
     <%--todo 7:use c:import to include login.jsp --%>
     <c:import url="login.jsp"/>
 </c:otherwise>
