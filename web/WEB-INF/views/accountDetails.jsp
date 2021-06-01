@@ -62,7 +62,7 @@
 					<!-- loop_start -->
 					<c:forEach var="o" items="${orderList}">
 						<tr>
-						<td>OID:${o.orderId}</td>   
+						<td>OID:${o.orderId}</td>
 						<td>${o.orderDate}</td>
 						<td><p>${o.firstName} ${o.lastName}</p>
 						<p> ${o.address1}</p>
