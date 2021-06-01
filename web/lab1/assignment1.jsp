@@ -11,7 +11,6 @@
 <body>
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <h1> c:forEach loog to print 1 to 10</h1>
-
     <ul>
         <c:forEach var="i" begin="1" end="10">
         <li>${i}</li>
@@ -32,12 +31,10 @@
             <li>${i+1}</li>
         </c:forEach>
     </ul>
-
-
 <% String[] letters ={"one","two","three","four","five","six","seven","eight","nine","ten"};
    pageContext.setAttribute("letters", letters);
 %>
-<h1> use c:forEach to print all elements of array   </h1>
+
     <%-- todo 4 : use c:forEach to print all elements of array --%>
     <ul>
         <c:forEach var="L" items="${pageScope.letters}">

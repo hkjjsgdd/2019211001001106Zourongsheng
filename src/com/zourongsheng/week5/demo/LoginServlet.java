@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("email",rs.getString("email"));
                 request.setAttribute("gender",rs.getString("gender"));
                 request.setAttribute("birthDate",rs.getString("birthDate"));
-                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
+//                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
 
                 }else {
                    out.println("Username or Password Error!!!");
