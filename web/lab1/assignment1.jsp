@@ -16,7 +16,7 @@
         <c:forEach var="i" begin="1" end="10">
         <li>${i}</li>
         </c:forEach>
-    </ul>
+    </ul>   
     <%-- todo 1 : run assignement1.jsp  --%>
     <%-- todo 2 : use c:forEach to print list 1,3,5,7,9   --%>
     <ul>
