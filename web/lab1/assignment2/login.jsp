@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Login</title>
-</head>      
+</head>
 <body>
 <%-- todo 9: use c:out to print message fron request --%>
 <%--<%=//request.getAttribute("message")%>--%>
