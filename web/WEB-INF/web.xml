@@ -63,13 +63,22 @@
         <init-param>
             <param-name>password</param-name>
             <param-value>admin123456789</param-value>
-        </init-param>
+        </init-param>   
     </servlet>
 
     <servlet-mapping>
         <servlet-name>ConfigDemoServlet</servlet-name>
         <url-pattern>/config</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>ZourongshengFilter</filter-name>
+        <filter-class>com.zourongsheng.lab2.ZourongshengFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ZourongshengFilter</filter-name>
+        <url-pattern>/lab2/welcome.jsp</url-pattern>
+    </filter-mapping>
+
 
     <servlet-mapping>
         <servlet-name>Zourongsheng</servlet-name>
