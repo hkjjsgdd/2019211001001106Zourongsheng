@@ -106,7 +106,7 @@
 		
 			
 		</div>
-	</section> <!--/#cart_items-->
+	<section> <!--/#cart_items-->
 	
 <div id="popup_box">    <!-- OUR PopupBox DIV-->
   
