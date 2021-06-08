@@ -34,10 +34,10 @@
 				<h2 class="heading" style="text-align: left">Order Info</h2>
 			</div>	
 						<div class="table-responsive col-sm-12">
-    
+
 				<table class="table table-condensed">
 				
-					
+				  	
 						<thead>
 						<tr >
 						<td><strong>Order ID</strong></td>
