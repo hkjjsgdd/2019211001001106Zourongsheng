@@ -82,7 +82,7 @@ public class UserDao implements IUserDao {
         ResultSet rs = st.executeQuery();
         User user =null;
         if (rs.next()){
-            user=new User();
+            user=new User();   
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
