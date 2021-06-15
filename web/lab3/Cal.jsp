@@ -30,12 +30,12 @@
 <script>
 
     function checkNum() {
-        var reg = /^[0-9]+.?[0-9]*$/;
-        if (!reg.test($('#one').val())){
+        var text = /^[0-9]+.?[0-9]*$/;
+        if (!text.test($('#one').val())){
             alert("First val is not a number");
             return false;
         }
-        if (!reg.test($('#two').val())){
+        if (!text.test($('#two').val())){
             alert("Second val is not a number");
             return false;
         }
@@ -43,8 +43,8 @@
     }
 
     function checkString() {
-        var reg=/\d/;
-        if (reg.test($('#name').val())){
+        var text=/\d/;
+        if (text.test($('#name').val())){
             alert("Name is not valid");
             return false;
         }
