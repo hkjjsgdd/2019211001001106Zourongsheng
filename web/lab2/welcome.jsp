@@ -6,9 +6,7 @@
 </head>
 <body>
 <h2>Welcome,
-    <%--todo 9 : use jsp:useBean to access the same instance of login bean from request scope--%>
     <jsp:useBean id="user" class="com.zourongsheng.lab2.Login" scope="request"/>
-    <%--todo 10 : use jsp:getProperty to display username --%>
     <jsp:getProperty name="user" property="username"/>
 </h2>
 </body>
