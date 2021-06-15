@@ -50,7 +50,7 @@ public class CalServlet extends HttpServlet {
                 case "divide": res =  String.valueOf(divide(firstVal,secondVal));break;
                 default:
                     System.out.println("Action error!");
-            }
+            }     
 
             Cookie cResult = new Cookie("cResult", res);
             response.addCookie(cFirstValue);
